@@ -1,0 +1,16 @@
+.items{
+    width: 50%;
+    min-width: fit-content;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.items * {
+    padding:10px;
+}
+.items :first-child{
+    padding-left:0px;
+}
+.items :last-child{
+    padding-right: 0px;
+}

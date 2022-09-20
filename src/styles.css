@@ -1,1 +1,507 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    font-family:"Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: linear-gradient(
+        rgba(125, 31, 31, 0.2), rgba(255, 228, 228, 0.2), rgba(190, 143, 143, 0.2),rgba(125, 31, 31, 0.2));
+}
+.watermark{
+    position: absolute;
+    width:100%;
+    max-height: 100vh;
+    font-size: 30em;
+    overflow:hidden;
+    font-weight: 900;
+    display:block;
+}
+.titledark{
+    color: rgba(255, 228, 228, 0.03);
+    text-shadow: 0 0 6px rgba(255, 228, 228, 0.03);
+}
+.titlelight{
+    color: rgba(86, 40, 40, 0.04);
+    text-shadow: 0 0 6px rgba(86, 40, 40, 0.04);
+}
+.one{
+    cursor: default;
+    position: fixed;
+    left: -2%;
+    top: -5%;
+}
+.two{
+    cursor: default;
+    position: fixed;
+    font-size: 1.5em;
+    top: 30%;
+    left: -15%;
+}
+.three{
+    cursor: default;
+    position: fixed;
+    top: 30%;
+    font-size: 1.4em;
+    left: 50%;
+}
+.main{
+    max-width:100vw;
+    display: block;
+}
+
+.bgdark{
+    background-image: linear-gradient(
+        rgb(2, 3, 12), rgb(35, 43, 54), rgb(13, 15, 30), rgb(2, 3, 12));
+     height: 100vh;
+     color: #f2f7f2;
+     transition: .4s;
+}
+.basecontainer{
+    display: flex;
+    width: 100%;   
+}
+
+.header{
+    z-index: 1;
+    display: block;
+    position: fixed;
+    width: 100%;
+    min-height: fit-content;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+.header.light{
+    color: rgba(242, 247, 242, 1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    background-color: rgba(46, 0, 0, 0.4);
+    border: 1px solid rgba(46, 0, 0, 0.125);
+    transition: .4s;
+}
+.header.dark{
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: .4s;
+}
+.hero{
+    padding:10px;
+    display: block;
+}
+.addbanner{
+    height: 120px;
+    width: 360px;
+    min-width: 360px;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+
+
+.assetSearch{
+    z-index: 1;
+    padding: 10px ;
+    margin-top: 150px;
+    position: fixed;
+    margin-left: 15%;
+    margin-right: 15%;
+    width:70%;
+    height: fit-content;
+    transition: .4s;
+}
+.inputbox{
+    position:relative;
+    margin-left: 98%;
+    width:0%;
+    height:0px;
+    transition: .4s;
+    visibility: hidden;
+}
+.inputbox.searchvisible{   
+    font-size: 1.2em;
+    font-weight: bold;
+    padding:7px;
+    margin-left: 69%;
+    width:30%;
+    height:fit-content;
+    transition: .4s;
+    visibility: visible;
+}
+
+.inputbox.searchvisible.dark{
+    color:#f0f6f0;
+    border: none;
+    border-bottom: 1px solid hsla(120, 24%, 96%, 0.5);
+    background: linear-gradient(rgba(242, 247, 242, 0)0%,rgba(242, 247, 242, 0.3)50%,rgba(242, 247, 242, 0.6)100%);
+}
+.inputbox.searchvisible.dark:focus{
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+.inputbox.searchvisible.light{
+    backdrop-filter: blur(14px) saturate(93%);
+    -webkit-backdrop-filter: blur(14px) saturate(93%);
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(46, 0, 0, 0.1);
+    transition: .4s;
+}
+.inputbox.searchvisible.light:focus{
+    outline: none;
+    border: 1px solid #580000e6;
+}
+.search-icon{
+    position:relative;
+    z-index: 2;
+    margin-left: -25px;
+    font-size: 1.3em;
+}
+.searching{
+    font-size: 1.7em;
+    margin-left: -30px;
+    transition: .4s;
+}
+
+
+
+
+.content{
+    padding: 10px;
+    padding-top:185px;
+    position: fixed;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: block;
+    width: 70%;
+    height: 100%;
+    min-height: 100vh; 
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+.content.light{
+    backdrop-filter: blur(14px) saturate(93%);
+    -webkit-backdrop-filter: blur(14px) saturate(93%);
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(46, 0, 0, 0.1);
+    transition: .4s;
+}
+.content.dark{
+    backdrop-filter: blur(14px) saturate(93%);
+    -webkit-backdrop-filter: blur(14px) saturate(93%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: .4s;
+}
+
+.footer{
+    z-index: 1;
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: fit-content;
+    padding-left: 15%;
+    padding-right: 15%;
+    bottom: 0;
+    font-size: 0.75em;
+}
+.footer.light{
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    background-color: rgba(46, 0, 0, 0.4);
+    border: 1px solid rgba(46, 0, 0, 0.125);
+}
+.footer.dark{
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: .4s;
+}
+
+
+.asset.light{
+    border-bottom: 1px solid rgba(4, 0, 0, 0.15);
+    transition: .4s;
+}
+.asset.dark{
+    border-bottom: 1px solid hsla(120, 24%, 96%, 0.5);
+    transition: .4s;
+}
+.asset.light:hover{ 
+    background: linear-gradient(rgba(46,0,0,0)0%, rgba(46,0,0,0.075)50%, rgba(46,0,0,0.15)100%);
+    transition: .4s;
+}
+.asset.dark:hover{ 
+    background: linear-gradient(rgba(242, 247, 242, 0)0%,rgba(242, 247, 242, 0.1)50%,rgba(242, 247, 242, 0.15)100%);
+    transition: .4s;
+}
+
+.assetRow{ 
+    padding: 10px;
+    height: fit-content;
+    display:flex;
+    justify-content:space-between;
+    width: 100%;
+    font-size: 1.5em;
+    min-width: fit-content;
+    scrollbar-width: thin;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+
+
+.assetRow *{
+    justify-content:center;
+}
+.assetName{
+    transition: 0.4s;
+    min-width: 250px;
+    width:250px;
+    max-width:250px;
+    display: flex;
+    align-self: center;
+    justify-content: start;
+}
+.assetDirection{
+    min-width: fit-content;
+    transition: 0.4s;
+    display: flex;
+    width:20%;
+    align-self: center;
+    justify-content:center;
+}
+.assetSmall{
+    align-self: center;
+    justify-content:center;
+    font-size: 0.65em;
+    padding-left: 5px;
+}
+.assetTachometer{
+    display:flex;
+    align-items: center;
+    justify-items:center;
+    width:20%;
+    padding:0px;
+}
+.chart {
+    margin: 0px;
+    padding: 0px;
+    width:100px;
+    height:100px;
+    transition: ease all .5s;
+}
+
+.chartbox{
+    margin: 0px;
+    padding: 0px;
+    width:100px;
+}
+
+.arrow{
+    padding: 5px;
+}
+
+.glow-up{
+    padding: 5px;
+    color:rgba(187, 211, 211, 0.9);
+}
+.glow-down{
+    padding: 5px;
+    color:rgba(211, 191, 191, 0.9);
+}
+.highlight.dark{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.highlight.light{
+    background-color: rgba(46, 0, 0, 0.3);
+}
+
+
+.add{
+    padding: 10px;
+    margin-bottom: 20px;
+    height: fit-content;
+    min-width: fit-content;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.122);
+}
+
+
+.details{
+    transition: 0.4s;
+}
+.detail{
+    margin-bottom: 20px;
+    height: fit-content;
+    display:flex;
+    justify-content:space-between;
+    width: 100%;
+    min-width: fit-content;
+    scrollbar-width: thin;
+    transition: 0.4s;
+}
+.detail *{
+    display: block;
+    transition: 0.4s;
+}
+
+.detail-left-row{
+    width:60%;
+    padding:0px 10px 0px 0px;
+    transition: 0.4s;
+}
+.detail-right-row{
+    width:40%;
+    padding:0px 0px 0px 10px;
+    transition: 0.4s;   
+}
+
+.detailRows{
+    overflow-x: auto;
+    scrollbar-width: thin;
+
+}
+
+.detailRow{ 
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: fit-content;
+    display:flex;
+    justify-content:space-between;
+    width: 100%;
+    font-size: 1em;
+    min-width: fit-content;
+    transition: 0.4s;
+}
+
+
+
+.detailRow *{
+    padding-left: 25px;
+    padding-right: 25px;
+    min-width: fit-content;
+    transition: 0.4s;
+    justify-content:center;
+    padding:0px;
+    display:flex;
+}
+.detailName{
+    justify-content:start;
+    min-width: 200px;
+    width:200px;
+    max-width:200px;
+}
+.detailDirection{
+    min-width: fit-content;
+    transition: 0.4s;
+    display: flex;
+    width:20%;
+    align-self: center;
+    justify-content:center;
+}
+.detailAccuracy{
+    align-self: center;
+    justify-content:center;
+    width:20%;
+}
+.detailHitRatio{
+    align-self: center;
+    justify-content:center;
+    width:20%;
+}
+.detailEmpty{
+    align-self: center;
+    justify-content:center;
+    width:20%;
+}
+
+
+
+
+.light a{
+    color: rgba(242, 247, 242, 0.8);
+}
+.light a:hover{
+    color: #fff;
+}
+.dark a{
+    color: rgba(242, 247, 242, 0.6);
+}
+.dark a:hover{
+    color: rgba(242, 247, 242, 1);
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+button{
+    padding:7px;
+    margin: 7px;
+    color:#303136;
+    cursor: pointer;
+}
+
+button.light{
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    background: #e0e0e0;
+    box-shadow:  10px 10px 15px #bebebe,
+             -10px -10px 15px #ffffff;
+    transition: .4s;
+}
+
+button.dark{
+    backdrop-filter: blur(9px) saturate(0%);
+    -webkit-backdrop-filter: blur(9px) saturate(0%);
+    background-color: rgba(242, 247, 242, 0.9);
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: .4s;
+}
+
+
+@media (max-width: 1440px){
+    .assetRow{        
+        min-width: 100%;
+        scrollbar-width: thin;
+        overflow: auto;
+    }
+
+    .content{        
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        transition: .4s;
+    }
+    .header{        
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+        transition: .4s;
+    }
+    .assetSearch{
+        width:90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        transition: .4s;
+    }
+
+
+}
+
+
+@media (max-width: 580px){
+    
+}

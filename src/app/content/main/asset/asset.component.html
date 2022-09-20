@@ -1,0 +1,29 @@
+<div class="asset" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
+    <div (click)="onPress()"  class="assetRow" [ngClass]="{highlight: display === true, dark: darkmode === true, light: darkmode===false}">
+        <div class="assetName">
+            {{ asset.name }} 
+            <div class="assetSmall">({{asset.timeframe}})</div>
+        </div>
+        <div class="assetDirection">            
+            <i *ngIf="asset.current_prediction > 0" class="fas fa-arrow-circle-up arrow glow-up" title="price is likely to rise"></i>
+            <i *ngIf="asset.current_prediction == 0" class="fas fa-arrow-circle-down arrow glow-down" title="price is likely to fall"></i> 
+            <div class="assetSmall" title="consensus between models">
+                {{consensus}}/{{totalconsensus}}
+            </div>
+        </div>
+        <div class="assetTachometer" title="hit ratio"> <!--hit ratio-->
+            <app-chart [data]="asset!.predictions_correct/asset!.predictions_total*100"></app-chart>
+        </div>
+        <div class="assetTachometer" title="accuracy"> <!--prediction score-->
+            <app-chart [data]="(asset!.accuracy*100)"></app-chart>
+
+        </div>
+        <div class="assetTachometer" title="sentiment">
+            <app-chart [data]="asset!.sentiment*100"></app-chart>
+        </div>
+    </div>
+    
+    <div id="comp-render" *ngIf="display">
+        <app-details [models]="asset.models"></app-details>
+    </div>
+</div>
