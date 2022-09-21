@@ -15,7 +15,7 @@ body{
     position: absolute;
     width:100%;
     max-height: 100vh;
-    font-size: 30em;
+    font-size: 25em;
     overflow:hidden;
     font-weight: 900;
     display:block;
@@ -37,15 +37,15 @@ body{
 .two{
     cursor: default;
     position: fixed;
-    font-size: 1.5em;
-    top: 30%;
+    font-size: 1.6em;
+    top: 35%;
     left: -15%;
 }
 .three{
     cursor: default;
     position: fixed;
-    top: 30%;
-    font-size: 1.4em;
+    top: 35%;
+    font-size: 1.5em;
     left: 50%;
 }
 .main{
@@ -61,7 +61,7 @@ body{
      transition: .4s;
 }
 .basecontainer{
-    display: flex;
+    display: block;
     width: 100%;   
 }
 
@@ -100,77 +100,9 @@ body{
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-
-
-.assetSearch{
-    z-index: 1;
-    padding: 10px ;
-    margin-top: 150px;
-    position: fixed;
-    margin-left: 15%;
-    margin-right: 15%;
-    width:70%;
-    height: fit-content;
-    transition: .4s;
-}
-.inputbox{
-    position:relative;
-    margin-left: 98%;
-    width:0%;
-    height:0px;
-    transition: .4s;
-    visibility: hidden;
-}
-.inputbox.searchvisible{   
-    font-size: 1.2em;
-    font-weight: bold;
-    padding:7px;
-    margin-left: 69%;
-    width:30%;
-    height:fit-content;
-    transition: .4s;
-    visibility: visible;
-}
-
-.inputbox.searchvisible.dark{
-    color:#f0f6f0;
-    border: none;
-    border-bottom: 1px solid hsla(120, 24%, 96%, 0.5);
-    background: linear-gradient(rgba(242, 247, 242, 0)0%,rgba(242, 247, 242, 0.3)50%,rgba(242, 247, 242, 0.6)100%);
-}
-.inputbox.searchvisible.dark:focus{
-    outline: none;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-}
-.inputbox.searchvisible.light{
-    backdrop-filter: blur(14px) saturate(93%);
-    -webkit-backdrop-filter: blur(14px) saturate(93%);
-    background-color: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(46, 0, 0, 0.1);
-    transition: .4s;
-}
-.inputbox.searchvisible.light:focus{
-    outline: none;
-    border: 1px solid #580000e6;
-}
-.search-icon{
-    position:relative;
-    z-index: 2;
-    margin-left: -25px;
-    font-size: 1.3em;
-}
-.searching{
-    font-size: 1.7em;
-    margin-left: -30px;
-    transition: .4s;
-}
-
-
-
-
 .content{
     padding: 10px;
-    padding-top:185px;
+    padding-top:158px;
     position: fixed;
     margin-left: 15%;
     margin-right: 15%;
@@ -198,7 +130,7 @@ body{
 
 .footer{
     z-index: 1;
-    display: block;
+    display: flex;
     position: fixed;
     width: 100%;
     height: fit-content;
@@ -240,10 +172,10 @@ body{
 }
 
 .assetRow{ 
-    padding: 10px;
+    padding: 0px 10px 0px 0px;
     height: fit-content;
     display:flex;
-    justify-content:space-between;
+    justify-content:space-around;
     width: 100%;
     font-size: 1.5em;
     min-width: fit-content;
@@ -251,26 +183,47 @@ body{
     cursor: pointer;
     transition: 0.4s;
 }
-
-
-
 .assetRow *{
     justify-content:center;
 }
+.assetData{
+    display: flex;
+    width:55%;
+}
+.assetData *{
+    justify-content:center;
+}
+.assetTachometers{
+    display: flex;
+    width:40%;
+}
+.assetTachometers *{
+    justify-content:center;
+}
+
 .assetName{
     transition: 0.4s;
-    min-width: 250px;
     width:250px;
-    max-width:250px;
+    max-width:60%;
     display: flex;
     align-self: center;
     justify-content: start;
 }
-.assetDirection{
+.assetTimeframe{
+    padding:0px 5px;
     min-width: fit-content;
     transition: 0.4s;
     display: flex;
-    width:20%;
+    width:15%;
+    align-self: center;
+    justify-content:center;
+}
+.assetDirection{
+    padding:0px 5px;
+    min-width: fit-content;
+    transition: 0.4s;
+    display: flex;
+    width:15%;
     align-self: center;
     justify-content:center;
 }
@@ -280,11 +233,12 @@ body{
     font-size: 0.65em;
     padding-left: 5px;
 }
+
 .assetTachometer{
     display:flex;
     align-items: center;
     justify-items:center;
-    width:20%;
+    width:33%;
     padding:0px;
 }
 .chart {
@@ -307,11 +261,14 @@ body{
 
 .glow-up{
     padding: 5px;
-    color:rgba(187, 211, 211, 0.9);
+    color:#85ffed;
+    text-shadow: 0px 0px 15px rgba(133, 255, 237,0.6);
 }
+
 .glow-down{
     padding: 5px;
-    color:rgba(211, 191, 191, 0.9);
+    color:rgb(172, 106, 134);
+    text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
 }
 .highlight.dark{
     background-color: rgba(255, 255, 255, 0.3);
@@ -333,9 +290,11 @@ body{
 
 .details{
     transition: 0.4s;
+    background: linear-gradient(rgba(242, 247, 242, 0)0%,rgba(242, 247, 242, 0.075)50%,rgba(242, 247, 242, 0.10)100%);
+    transition: .4s;
 }
 .detail{
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     height: fit-content;
     display:flex;
     justify-content:space-between;
@@ -368,8 +327,6 @@ body{
 
 .detailRow{ 
     padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     height: fit-content;
     display:flex;
     justify-content:space-between;
@@ -491,8 +448,12 @@ button.dark{
         padding-right: 5%;
         transition: .4s;
     }
-    .assetSearch{
-        width:90%;
+    .assetName{
+        display: block;
+    }
+    .footer{
+        width: 90%;
+        padding: 10px;
         margin-left: 5%;
         margin-right: 5%;
         transition: .4s;
@@ -501,7 +462,32 @@ button.dark{
 
 }
 
+@media (max-width: 1045px){
+    .content{
+        padding-top:125px;
+    }
+}
 
-@media (max-width: 580px){
+@media (max-width: 800px){
+    .content{
+        padding-top:96px;
+    }
+    .assetRow{
+        display:block;
+    }
+
+    .assetData{
+        padding-top: 10px;
+        width:100%;
+        height: fit-content;
+    }
     
+
+    .assetTachometers{
+        width:100%;
+    }
+
+    .assetName{
+        font-size: 0.75em;
+    }
 }

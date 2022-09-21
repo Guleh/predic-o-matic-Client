@@ -4,6 +4,7 @@ import { Tag } from "./tag.model";
 export interface Asset {
     id: string;
     symbol: string;
+    platformsymbol: string;
     timeframe: string;
     identifier: string;
     description: string;
@@ -17,8 +18,9 @@ export interface Asset {
     accuracy: number;
     sentiment: number;
     isactive: boolean;
-    last_updated: boolean;
     tags: Tag[]; 
     models: Algo[]; 
+    prediction_term: string;
+    last_updated: string;
     candles: string;
 }

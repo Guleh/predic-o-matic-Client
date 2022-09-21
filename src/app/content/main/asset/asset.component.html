@@ -1,8 +1,14 @@
 <div class="asset" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
     <div (click)="onPress()"  class="assetRow" [ngClass]="{highlight: display === true, dark: darkmode === true, light: darkmode===false}">
+        <div class="assetData">
         <div class="assetName">
             {{ asset.name }} 
-            <div class="assetSmall">({{asset.timeframe}})</div>
+            <div class="assetSmall">({{asset.platformsymbol}})</div>
+        </div>
+        <div class="assetTimeframe">
+            <div class="assetSmall">
+            {{ asset.prediction_term | date : 'M/d/yy - H:00'}} 10/20/21 - 11:00
+            </div>
         </div>
         <div class="assetDirection">            
             <i *ngIf="asset.current_prediction > 0" class="fas fa-arrow-circle-up arrow glow-up" title="price is likely to rise"></i>
@@ -11,15 +17,18 @@
                 {{consensus}}/{{totalconsensus}}
             </div>
         </div>
-        <div class="assetTachometer" title="hit ratio"> <!--hit ratio-->
-            <app-chart [data]="asset!.predictions_correct/asset!.predictions_total*100"></app-chart>
         </div>
-        <div class="assetTachometer" title="accuracy"> <!--prediction score-->
-            <app-chart [data]="(asset!.accuracy*100)"></app-chart>
+        <div class="assetTachometers">
+            <div class="assetTachometer" title="hit ratio"> <!--hit ratio-->
+                <app-chart [data]="asset!.predictions_correct/asset!.predictions_total*100"></app-chart>
+            </div>
+            <div class="assetTachometer" title="prediction score"> <!--prediction score-->
+                <app-chart [data]="((asset!.accuracy*50)+(asset!.predictions_correct/asset!.predictions_total*50))"></app-chart>
 
-        </div>
-        <div class="assetTachometer" title="sentiment">
-            <app-chart [data]="asset!.sentiment*100"></app-chart>
+            </div>
+            <div class="assetTachometer" title="sentiment">
+                <app-chart [data]="asset!.sentiment*100"></app-chart>
+            </div>
         </div>
     </div>
     

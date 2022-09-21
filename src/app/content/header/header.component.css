@@ -80,3 +80,24 @@
   .titlecontainer small{
     color: rgba(242, 247, 242, 0.6);
   }
+
+
+  @media (max-width: 1045px){
+    .titlecontainer{
+      width: 100%;
+      display:block;
+    }
+    .addbanner{
+      display: none;
+    }
+
+  }
+  
+  @media (max-width: 800px){
+    .switch{
+      display:none;
+    }
+    h1{
+      font-size: 2em;
+    }
+  }

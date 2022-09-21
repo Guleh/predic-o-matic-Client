@@ -27,6 +27,21 @@
         <div class="detail-left-row">
 
 <div class="detailRows">
+    <div class="detailRow">
+        <div class="detailName">
+            <b> model </b>
+        </div>
+        <div class="detailDirection">            
+            <b> prediction </b>
+        </div>
+        <div class="detailAccuracy" title="based on past performance and current model accuracy"> <!--prediction score-->
+            <b> prediction score </b>*
+        </div>
+        <div class="detailHitRatio" title="predicted correct / total number of predictions made"> <!--hit ratio-->
+            <b> hit ratio </b>*
+        </div>
+    </div>
+
     <div class="detailRow" *ngFor="let item of models;">
         <div class="detailName">
             {{ item.name }}
@@ -36,7 +51,7 @@
             <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down arrow glow-down"></i> 
         </div>
         <div class="detailAccuracy" title="accuracy"> <!--prediction score-->
-            {{ ((item!.accuracy*50)+(item!.predictions_correct/item!.predictions_total*50)).toFixed(0) }}%
+            {{ (item!.accuracy*100).toFixed(0) }}%
         </div>
         <div class="detailHitRatio" title="hit ratio"> <!--hit ratio-->
             {{item.predictions_correct}}/{{item.predictions_total}}

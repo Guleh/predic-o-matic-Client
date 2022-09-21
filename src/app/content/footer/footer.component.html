@@ -1,14 +1,23 @@
-<div class="items" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
-    <a routerLink="">
-        © PREDICT-O-MATIC {{year}}
-    </a>
-    <a routerLink="/terms">
-        TERMS OF USE
-    </a>
-    <a routerLink="/privacy">
-        PRIVACY NOTICE
-    </a>
-    <a routerLink="/cookies">
-        COOKIE POLICY
-    </a>
+
+<div class="footer" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
+    <div class="footer-items">
+    <div class="items" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
+        <a routerLink="">
+            © PREDICT-O-MATIC {{year}}
+        </a>
+        <a routerLink="/terms">
+            TERMS OF USE
+        </a>
+        <a routerLink="/privacy">
+            PRIVACY NOTICE
+        </a>
+        <a routerLink="/cookies">
+            COOKIE POLICY
+        </a>
+    </div>
+    <div class="itemsright">
+        <a routerLink="/terms" class="glow" title="affiliate link">
+            START TRADING NOW ON BITMEX *
+        </a>
+    </div>
 </div>

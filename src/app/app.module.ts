@@ -15,6 +15,7 @@ import { DetailsComponent } from './content/main/asset/details/details.component
 import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from './content/main/asset/chart/chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { CustomDatePipe } from './services/custom.datepipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     CookiepolicyComponent,
     DetailsComponent,
     ChartComponent,
+    CustomDatePipe,
   ],
   imports: [
     BrowserModule,

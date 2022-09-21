@@ -1,5 +1,5 @@
 
-<div class="watermark" [className]="{titledark: darkmode === true, titlelight: darkmode === false}" unselectable="on">
+<div class="watermark" [ngClass]="{titledark: darkmode === true, titlelight: darkmode === false}" unselectable="on">
   <div class="one" onselectstart="return false">
   PREDICT
 </div>
@@ -17,9 +17,7 @@
             <app-header></app-header>
           </div>
             <router-outlet></router-outlet>
-          <div class="footer" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
             <app-footer></app-footer>
-          </div>
         </div>
     </div> 
 </div>
