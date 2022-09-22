@@ -71,14 +71,17 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
+    transition: 0.4s;
   }
 
   h1{
     font-size: 3.5em;
+    transition: 0.4s;
   }
 
   .titlecontainer small{
     color: rgba(242, 247, 242, 0.6);
+    transition: 0.4s;
   }
 
 
@@ -86,9 +89,11 @@
     .titlecontainer{
       width: 100%;
       display:block;
+      transition: 0.4s;
     }
     .addbanner{
       display: none;
+      transition: 0.4s;
     }
 
   }
@@ -96,8 +101,10 @@
   @media (max-width: 800px){
     .switch{
       display:none;
+      transition: 0.4s;
     }
     h1{
       font-size: 2em;
+      transition: 0.4s;
     }
   }

@@ -7,7 +7,6 @@
 
 .items{
     width: 50%;
-    min-width: fit-content;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -27,6 +26,7 @@
     align-items: center;
     justify-self: right;
     justify-content:end;
+    padding-left:20px;
 }
 a.glow{
     color: rgba(133, 255, 237,0.7);

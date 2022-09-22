@@ -29,16 +29,19 @@
 <div class="detailRows">
     <div class="detailRow" id="detailRowTitle">
         <div class="detailName">
-            <b> model </b>
+            <b>model</b>
         </div>
         <div class="detailDirection">            
-            <b> prediction </b>
+            <b>prediction</b>
         </div>
-        <div class="detailAccuracy" title="based on past performance and current model accuracy"> <!--prediction score-->
-            <b> prediction score </b>*
+        <div class="detailAccuracy" title="current model accuracy"> <!--prediction score-->
+            <b>score</b>*
         </div>
         <div class="detailHitRatio" title="predicted correct / total number of predictions made"> <!--hit ratio-->
-            <b> hit ratio </b>*
+            <b>hit ratio</b>*
+        </div>
+        <div class="detailDate" title="last parameter tuning">
+            <b>last tuning</b>*
         </div>
     </div>
 
@@ -55,6 +58,9 @@
         </div>
         <div class="detailHitRatio" title="hit ratio"> <!--hit ratio-->
             {{item.predictions_correct}}/{{item.predictions_total}}
+        </div>
+        <div class="detailDate" title="last parameter tuning">
+            {{item.last_updated  | date : 'M/d/yy - H:mm'}}
         </div>
     </div>
 </div>
