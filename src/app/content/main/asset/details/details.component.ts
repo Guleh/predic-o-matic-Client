@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Algo } from 'src/app/models/algo.model';
+import { Asset } from 'src/app/models/asset.model';
 
 @Component({
   selector: 'app-details',
@@ -8,7 +9,8 @@ import { Algo } from 'src/app/models/algo.model';
 })
 export class DetailsComponent implements OnInit {
 
-  @Input()models?:Algo[];
+  
+  @Input()asset?:Asset;
   constructor() { }
 
   ngOnInit(): void {

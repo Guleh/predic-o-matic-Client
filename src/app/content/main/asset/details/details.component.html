@@ -1,28 +1,11 @@
 
-<!--
-<div class="details">
-    
-    <div class="detail" *ngFor="let item of models;">
-        <div class="detail-left-row">
-            <div>{{item.name}}</div>
-            <div>Accuracy</div>
-            <div>Hit ratio</div>
-        </div>   
-        <div class="detail-right-row">
-            <div>
-                <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up glow-up"></i>
-                <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down glow-down"></i> 
-            </div>
-            <div>{{(item.accuracy*100).toFixed(0)}} %</div>
-            <div>{{item.predictions_correct}}/{{item.predictions_total}}
 
-            </div>
-    </div>
-</div>
--->
 
 <div class="details">
-    
+    <div class="assetPrice">            
+        last close: {{asset?.last_close}}
+        current price: {{asset?.current_price}}
+        </div>
     <div class="detail">
         <div class="detail-left-row">
 
@@ -45,13 +28,13 @@
         </div>
     </div>
 
-    <div class="detailRow" *ngFor="let item of models;">
+    <div class="detailRow" *ngFor="let item of asset?.models;">
         <div class="detailName">
             {{ item.name }}
         </div>
         <div class="detailDirection">            
-            <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up arrow glow-up"></i>
-            <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down arrow glow-down"></i> 
+            <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up arrow glowup"></i>
+            <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down arrow glowdown"></i> 
         </div>
         <div class="detailAccuracy" title="accuracy"> <!--prediction score-->
             {{ (item!.accuracy*100).toFixed(0) }}%

@@ -24,5 +24,6 @@ export interface Asset {
     prediction_term: string;
     last_updated: string;
     candles: string;
+    last_close: number;
     current_price: number;
 }

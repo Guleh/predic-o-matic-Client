@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from './content/main/asset/chart/chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CustomDatePipe } from './services/custom.datepipe';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CustomDatePipe } from './services/custom.datepipe';
     DetailsComponent,
     ChartComponent,
     CustomDatePipe,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

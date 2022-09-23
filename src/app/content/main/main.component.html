@@ -3,8 +3,14 @@
 
 
 <div class="content" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
+    <div class="overlay" *ngIf="isLoading">
+        <app-loading-spinner  ></app-loading-spinner>
+    </div>
     <app-search></app-search>
     <app-asset *ngFor="let item of assets;" [asset]="item"></app-asset>
+    <div *ngIf="empty" class="noAssets">
+        An error occured, please try again later.
+    </div>
     <div class="add" [ngClass]="{dark: darkmode === true, light: darkmode===false}">   
        hello this is an add 
     </div>

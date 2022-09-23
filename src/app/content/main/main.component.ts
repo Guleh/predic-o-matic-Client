@@ -10,17 +10,25 @@ import { DarkmodeService } from 'src/app/services/darkmode.service';
 })
 export class MainComponent implements OnInit {
 
+  
+  isLoading=false;
+  empty = false;
   constructor(private darkmodeService: DarkmodeService, private assetService: AssetService) { }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.darkmodeService.modeChanged.subscribe(x => this.darkmode = x)
     this.assetService.assetsChanged.subscribe((assets: Asset[])=> {
       this.assets = assets
-      this.assets.forEach(asset => 
+      this.assets.forEach(asset => {
         this.assetService.getCurrentPrice(asset).subscribe(result => {
-          asset.current_price = result[asset.cg_name.toLowerCase()]['usd'];          
-        }))
-      
+          asset.current_price = result[asset.cg_name.toLowerCase()]['usd'];                   
+        })      
+      });
+      if(assets.length < 0){
+        this.empty = true;
+      }
+      this.isLoading=false;
     })
     this.assetService.fetchAssets();
   }

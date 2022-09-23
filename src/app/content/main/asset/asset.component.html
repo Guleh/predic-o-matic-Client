@@ -2,10 +2,10 @@
     <div (click)="onPress()"  class="assetRow" [ngClass]="{highlight: display === true, dark: darkmode === true, light: darkmode===false}">
         <div class="assetData">
             <div class="assetName">
-                <i *ngIf="asset.current_prediction > 0" class="fas fa-arrow-circle-up arrow glow-up big-arrow" title="price is likely to rise"></i>
-                <i *ngIf="asset.current_prediction == 0" class="fas fa-arrow-circle-down arrow glow-down big-arrow" title="price is likely to fall"></i> 
-                
-                {{ asset.name }} 
+                <i *ngIf="asset.current_prediction > 0" class="fas fa-arrow-circle-up arrow glowup big-arrow" title="price is likely to rise"></i>
+                <i *ngIf="asset.current_prediction == 0" class="fas fa-arrow-circle-down arrow glowdown big-arrow" title="price is likely to fall"></i> 
+
+                    {{ asset.name }} 
                 <div class="assetSmall" id="ticker">({{asset.platformsymbol}})</div>
                 
             </div>
@@ -16,15 +16,15 @@
                 </div>
             </div>
             -->
-            <div class="assetDirection">            
-                <div id="price" title="model consensus">
+            <div class="assetPrice">            
+                <div id="price" title="current price">
                     <div class="assetSmall">
-                    last close:
-                    current price: {{asset.current_price}}
-                    </div>
-               </div>
-           </div>
-
+                        <span [ngClass]="{textglowup: asset.current_price > asset.last_close, textglowdown: asset.current_price < asset.last_close}">
+                        $ {{asset.last_close}} / $ {{asset.current_price}}
+                        </span>
+                    </div>    
+                </div>
+            </div>
             <div class="assetTimeframe">
                 <div class="assetSmall">
                 {{ asset.prediction_term | date : 'M/d/yy - H:00'}}
@@ -46,6 +46,6 @@
     </div>
     
     <div id="comp-render" *ngIf="display">
-        <app-details [models]="asset.models"></app-details>
+        <app-details [asset]="asset"></app-details>
     </div>
 </div>

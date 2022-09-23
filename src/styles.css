@@ -10,6 +10,7 @@ body{
     overflow-x: hidden;
     background-image: linear-gradient(
         rgba(125, 31, 31, 0.2), rgba(255, 228, 228, 0.2), rgba(190, 143, 143, 0.2),rgba(125, 31, 31, 0.2));
+    background-color: #000;
 }
 .watermark{
     position: absolute;
@@ -155,7 +156,8 @@ body{
     transition: .4s;
 }
 .big-arrow{
-    padding:0px 5px 0px 0px !important;
+    font-size:1.2em;
+    padding:0px 10px 0px 0px !important;
 }
 
 .asset.light{
@@ -210,7 +212,7 @@ body{
 
 .assetName{
     transition: 0.4s;
-    width:250px;
+    width:275px;
     max-width:60%;
     display: flex;
     align-self: center;
@@ -221,7 +223,7 @@ body{
     min-width: fit-content;
     transition: 0.4s;
     display: flex;
-    width:15%;
+    width:30%;
     align-self: center;
     justify-content:center;
 }
@@ -233,6 +235,15 @@ body{
     width:15%;
     align-self: center;
     justify-content:center;
+}
+.assetPrice{
+    padding:0px 5px;
+    min-width: fit-content;
+    transition: 0.4s;
+    display: flex;
+    width:30%;
+    align-self: center;
+    justify-content:start;
 }
 .assetSmall{
     align-self: center;
@@ -266,14 +277,27 @@ body{
     padding: 5px;
 }
 
-.glow-up{
+.glowup{
     padding: 5px;
     color:#85ffed;
     text-shadow: 0px 0px 15px rgba(133, 255, 237,0.6);
 }
 
-.glow-down{
+.glowdown{
     padding: 5px;
+    color:rgb(172, 106, 134);
+    text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
+}
+.textglowup{
+    display:flex;
+    align-content: start;
+    color:#85ffed;
+    text-shadow: 0px 0px 15px rgba(133, 255, 237,0.6);
+}
+
+.textglowdown{
+    display:flex;
+    align-content: start;
     color:rgb(172, 106, 134);
     text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
 }
@@ -441,6 +465,14 @@ button.dark{
     transition: .4s;
 }
 
+.noAssets{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    font-size: 1.5em;
+    padding:50px;
+}
 
 @media (max-width: 1440px){
     .assetRow{        
@@ -448,6 +480,9 @@ button.dark{
         scrollbar-width: thin;
         overflow: auto;
         transition: 0.4s;
+    }
+    .assetPrice{
+        padding:5px 10px;
     }
 
     .content{        
@@ -462,10 +497,6 @@ button.dark{
         padding-right: 5%;
         transition: .4s;
     }
-    .assetName{
-        display: block;
-        transition: 0.4s;
-    }
     .footer{
         width: 90%;
         padding: 10px;
@@ -473,15 +504,31 @@ button.dark{
         margin-right: 5%;
         transition: .4s;
     }
-    .assetSmall{
-        padding-left: 0px;
-        transition: 0.4s;
-    }
+
 
 
 }
 
 @media (max-width: 1045px){
+    
+    .assetName{
+        width:150px;
+        display:block;
+        transition: 0.4s;
+    }
+    .assetName *{
+        display: flex;
+        width:100%;
+        transition: 0.4s;
+    }
+    #ticker{
+        justify-content:start;
+        transition: 0.4s;
+    } 
+    .assetSmall{
+        padding-left: 0px;
+        transition: 0.4s;
+    }
     .content{
         padding-top:125px;
         transition: 0.4s;
@@ -558,23 +605,6 @@ button.dark{
 
 }
 
-@media (max-width: 1045px) and (min-width: 801px){ 
-    .assetName{
-        display:block;
-        transition: 0.4s;
-    }
-    .assetName *{
-        display: flex;
-        width:100%;
-        transition: 0.4s;
-    }
-    #ticker{
-        justify-content:start;
-        transition: 0.4s;
-    }
-
-    
-}
 
 @media (max-width: 800px){
     .content{
@@ -611,6 +641,12 @@ button.dark{
         padding: 0px;
         transition: 0.4s;
     } 
+ 
+    .assetPrice{
+        z-index: 2;
+        padding: 0px;
+        transition: 0.4s;
+    } 
 
     .assetTachometers{
         width:100%;
@@ -635,3 +671,6 @@ button.dark{
         transition: 0.4s;
     }
 }
+
+
+

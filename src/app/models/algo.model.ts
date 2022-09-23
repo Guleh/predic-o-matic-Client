@@ -16,4 +16,5 @@ export interface Algo {
     predictions_total: number;
     predictions_correct: number;
     last_updated: string;
+    last_tuning: string;
 }
