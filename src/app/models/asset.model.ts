@@ -9,6 +9,7 @@ export interface Asset {
     identifier: string;
     description: string;
     name: string;
+    cg_name: string;
     last_prediction: number;
     current_prediction: number;
     ups: number;
@@ -23,4 +24,5 @@ export interface Asset {
     prediction_term: string;
     last_updated: string;
     candles: string;
+    current_price: number;
 }

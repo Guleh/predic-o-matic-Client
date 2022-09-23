@@ -49,4 +49,9 @@ export class AssetService {
   getModels(){
     return this.models.slice();
   }
+
+  getCurrentPrice(asset:Asset){
+    return this.http.get<any>('https://api.coingecko.com/api/v3/simple/price?ids='+asset.cg_name+'&vs_currencies=USD')
+  }
+    
 }

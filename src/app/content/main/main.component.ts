@@ -16,6 +16,11 @@ export class MainComponent implements OnInit {
     this.darkmodeService.modeChanged.subscribe(x => this.darkmode = x)
     this.assetService.assetsChanged.subscribe((assets: Asset[])=> {
       this.assets = assets
+      this.assets.forEach(asset => 
+        this.assetService.getCurrentPrice(asset).subscribe(result => {
+          asset.current_price = result[asset.cg_name.toLowerCase()]['usd'];          
+        }))
+      
     })
     this.assetService.fetchAssets();
   }

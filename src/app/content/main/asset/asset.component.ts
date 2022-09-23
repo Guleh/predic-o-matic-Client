@@ -16,7 +16,6 @@ export class AssetComponent implements OnInit {
   ngOnInit(): void {
     this.darkmodeService.modeChanged.subscribe(x => this.darkmode = x)
     if (this.asset){
-      console.log(this.asset)
       if(this.asset.current_prediction == 1){
         this.consensus = this.asset.ups;
       } else if (this.asset.current_prediction == 0) {
