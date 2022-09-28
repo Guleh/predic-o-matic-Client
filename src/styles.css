@@ -216,7 +216,7 @@ body{
     max-width:60%;
     display: flex;
     align-self: center;
-    justify-content: start;
+    justify-content: flex-start;
 }
 .assetTimeframe{
     padding:0px 5px;
@@ -243,7 +243,7 @@ body{
     display: flex;
     width:30%;
     align-self: center;
-    justify-content:start;
+    justify-content:flex-start;
 }
 .assetSmall{
     align-self: center;
@@ -290,14 +290,14 @@ body{
 }
 .textglowup{
     display:flex;
-    align-content: start;
+    align-content: flex-start;
     color:#85ffed;
     text-shadow: 0px 0px 15px rgba(133, 255, 237,0.6);
 }
 
 .textglowdown{
     display:flex;
-    align-content: start;
+    align-content: flex-start;
     color:rgb(172, 106, 134);
     text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
 }
@@ -313,6 +313,20 @@ body{
 .highlight.light{
     background-color: rgba(46, 0, 0, 0.3);
 }
+.highlight.dark .textglowup{
+    display:flex;
+    align-content: flex-start;
+    color:#85ffed;
+    text-shadow: 0px 0px 15px rgba(133, 255, 237,0.6);
+}
+
+.highlight.dark .textglowdown{
+    display:flex;
+    align-content: flex-start;
+    color:rgb(129, 0, 54);
+    text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
+}
+
 
 
 .add{
@@ -394,19 +408,19 @@ body{
     min-width: fit-content;
     transition: 0.4s;
     display: flex;
-    width:20%;
+    width:10%;
     align-self: center;
     justify-content:center;
 }
 .detailAccuracy{
     align-self: center;
     justify-content:center;
-    width:20%;
+    width:10%;
 }
 .detailHitRatio{
     align-self: center;
     justify-content:center;
-    width:20%;
+    width:10%;
 }
 .detailEmpty{
     align-self: center;
@@ -561,25 +575,22 @@ button.dark{
     .detailDirection{
         align-self: start;
         justify-content:center;
-        min-width: 20%;
-        width:20%;
-        max-width:20%;
+        width:10%;
+        max-width:10%;
         transition: 0.4s;
     }
     .detailAccuracy{
         align-self: start;
         justify-content:center;
-        min-width: 20%;
-        width:20%;
-        max-width:20%;
+        width:10%;
+        max-width:10%;
         transition: 0.4s;
     }
     .detailHitRatio{
         align-self: start;
         justify-content:center;
-        min-width: 20%;
-        width:20%;
-        max-width:20%;
+        width:10%;
+        max-width:10%;
         transition: 0.4s;
     }
     .detailDate{
@@ -669,6 +680,9 @@ button.dark{
     .detailRows :last-child{
         padding-bottom:10px;
         transition: 0.4s;
+    }
+    .detailDate{
+        display: none;
     }
 }
 

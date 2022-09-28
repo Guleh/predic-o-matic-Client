@@ -32,3 +32,18 @@ a.glow{
     color: rgba(133, 255, 237,0.7);
     text-shadow: 0px 0px 7px rgba(133, 255, 237,0.5);
 }
+
+
+
+@media (max-width: 800px){
+    .footer-items{
+        display: block;
+    }
+    .items{
+        width: 100%;
+    }
+    .itemsright{
+        padding-left:0px;
+    }
+}
+

@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 export class AssetService {
   constructor(private http: HttpClient) { }
 
-  url = 'http://127.0.0.1:8000/api'
+  url = 'http://13.39.21.161:8080/api/' /*'http://127.0.0.1:8000/api'*/
 
   fetchAssets(){    
     this.http.get<Asset[]>(this.url+'/assets')
