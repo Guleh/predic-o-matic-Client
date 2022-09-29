@@ -54,3 +54,11 @@
   .loader span:nth-child(4) {
     filter: blur(50px);
   }
+
+  .overlay{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+  }

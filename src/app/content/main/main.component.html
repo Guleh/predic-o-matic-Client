@@ -3,9 +3,7 @@
 
 
 <div class="content" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
-    <div class="overlay" *ngIf="isLoading">
-        <app-loading-spinner  ></app-loading-spinner>
-    </div>
+    
     <app-search></app-search>
     <app-asset *ngFor="let item of assets;" [asset]="item"></app-asset>
     <div *ngIf="empty" class="noAssets">
@@ -13,5 +11,57 @@
     </div>
     <div class="add" [ngClass]="{dark: darkmode === true, light: darkmode===false}">   
        hello this is an add 
+    </div>
+</div>
+
+<div class="overlay" *ngIf="isLoading">
+    <app-loading-spinner  ></app-loading-spinner>
+</div>
+
+<div class="contentHeader" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
+    <div class="asset">
+        <div class="assetRow">
+            <div class="assetData">
+                <div class="assetName">
+                <i class="fas fa-arrow-circle-up arrow glowup big-arrow" style="visibility:hidden"></i>
+                <div class="assetSmall">asset name</div>
+                <div class="assetSmall" id="ticker">(symbol)</div>
+                </div>
+                <div class="assetPrice">            
+                    <div id="price" title="current price">
+                        <div class="assetSmall">
+                            <span class="textglow">
+                            last / current price
+                            </span>
+                        </div>    
+                    </div>
+                </div>
+                <div class="assetTimeframe">
+                    <div class="assetSmall">
+                        prediction term
+                    </div>
+                </div>
+            </div>
+            <div class="assetTachometers" id="texttachometers">
+                <div class="assetTachometer" title="hit ratio">
+                    
+                    <div class="assetSmall"> <!--hit ratio-->
+                    hit ratio
+                </div>
+                </div>
+                <div class="assetTachometer" title="prediction score">
+                    
+                    <div class="assetSmall"> <!--prediction score-->
+                    prediction score
+                </div>
+                </div>
+                <div class="assetTachometer" title="sentiment">
+                    
+                    <div class="assetSmall">
+                    sentiment
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

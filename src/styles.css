@@ -104,7 +104,7 @@ body{
 
 .content{
     padding: 0px;
-    padding-top:158px;
+    padding-top:160px;
     padding-bottom: 158px;
     position: fixed;
     margin-left: 15%;
@@ -124,13 +124,45 @@ body{
     transition: .4s;
 }
 .content.dark{
-    backdrop-filter: blur(14px) saturate(93%);
-    -webkit-backdrop-filter: blur(14px) saturate(93%);
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.125);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    background-color: rgba(255, 255, 255, 0.12);
     transition: .4s;
+    border: 0px;
+}
+.contentHeader{
+    padding: 0px;
+    margin-top:141px;
+    position: fixed;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    height: fit-content;
+    font-size: 0.8em;
 }
 
+.contentHeader .asset{
+    margin-right: 10px;
+}
+
+.contentHeader .asset .assetRow{
+    padding-right: 10px;
+}
+
+
+
+.contentHeader.light{
+    backdrop-filter: blur(14px) saturate(93%);
+    -webkit-backdrop-filter: blur(14px) saturate(93%);
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(46, 0, 0, 0.1);
+    transition: .4s;
+}
+.contentHeader.dark{
+    background-color: rgb(242, 247, 242,0.75);
+    color:rgba(2, 3, 12, 0.7);
+    transition: .4s;
+}
 .footer{
     z-index: 1;
     display: flex;
@@ -207,13 +239,13 @@ body{
     width:40%;
 }
 .assetTachometers *{
-    justify-content:end;
+    justify-content:center;
 }
 
 .assetName{
     transition: 0.4s;
     width:275px;
-    max-width:60%;
+    min-width:50px;
     display: flex;
     align-self: center;
     justify-content: flex-start;
@@ -223,9 +255,10 @@ body{
     min-width: fit-content;
     transition: 0.4s;
     display: flex;
-    width:30%;
+    min-width:20%;
+    max-width: 30%;
     align-self: center;
-    justify-content:center;
+    justify-content:start;
 }
 .assetDirection{
     padding:0px 5px;
@@ -238,10 +271,10 @@ body{
 }
 .assetPrice{
     padding:0px 5px;
-    min-width: fit-content;
+    max-width: 30%;
     transition: 0.4s;
     display: flex;
-    width:30%;
+    min-width:30%;
     align-self: center;
     justify-content:flex-start;
 }
@@ -258,6 +291,9 @@ body{
     justify-items:center;
     width:33%;
     padding:0px;
+}
+.contentHeader .asset{
+    border-bottom: 0px;
 }
 .chart {
     margin: 0px;
@@ -287,6 +323,10 @@ body{
     padding: 5px;
     color:rgb(172, 106, 134);
     text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
+}
+.textglow{
+    display:flex;
+    align-content: flex-start;
 }
 .textglowup{
     display:flex;
@@ -505,6 +545,12 @@ button.dark{
         margin-right: 5%;
         transition: .4s;
     }
+    .contentHeader{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        transition: .4s;
+    }
     .header{        
         width: 100%;
         padding-left: 5%;
@@ -524,20 +570,8 @@ button.dark{
 }
 
 @media (max-width: 1045px){
-    
-    .assetName{
-        width:150px;
-        display:block;
-        transition: 0.4s;
-    }
-    .assetName *{
-        display: flex;
-        width:100%;
-        transition: 0.4s;
-    }
     #ticker{
-        justify-content:start;
-        transition: 0.4s;
+        display: none;
     } 
     .assetSmall{
         padding-left: 0px;
@@ -547,7 +581,8 @@ button.dark{
         padding-top:125px;
         transition: 0.4s;
     }
-    #detailRowTitle{
+    .contentHeader{
+        margin-top:125px;
         transition: 0.4s;
     }
     .details{
@@ -613,13 +648,20 @@ button.dark{
         justify-content: flex-end;
         transition: 0.4s;
     }
+    #texttachometers *{
+        justify-content: center;
+    }
 
 }
 
 
 @media (max-width: 800px){
     .content{
-        padding:96px 0px;
+        padding:124px 0px;
+        transition: 0.4s;
+    }
+    .contentHeader{
+        margin-top:96px;
         transition: 0.4s;
     }
     .assetRow{
@@ -639,9 +681,18 @@ button.dark{
         align-self: start;
         transition: 0.4s;
     }
+    .assetName{
+        width:33%;
+        max-width:33%;
+        min-width: 33%;
+    }
     .assetTimeframe{
+        width:33%;
+        max-width:33%;
+        min-width: 33%;
         font-size: 0.8em;
         transition: 0.4s;
+        justify-content:end;
     }
     .assetDirection .fas{
         margin-top: -7px;
@@ -654,9 +705,13 @@ button.dark{
     } 
  
     .assetPrice{
+        width:33%;
+        max-width:33%;
+        min-width: 33%;
         z-index: 2;
         padding: 0px;
         transition: 0.4s;
+        justify-content:center;
     } 
 
     .assetTachometers{
@@ -671,6 +726,7 @@ button.dark{
 
     #price{
         font-size: 0.8em;
+        text-align: center;
     }
 
     .detailRow{
@@ -682,6 +738,9 @@ button.dark{
         transition: 0.4s;
     }
     .detailDate{
+        display: none;
+    }
+    #texttachometers{
         display: none;
     }
 }
