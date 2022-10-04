@@ -25,7 +25,8 @@ export class MainComponent implements OnInit {
           asset.current_price = result[asset.cg_name.toLowerCase()]['usd'];    
 
         })    
-        asset.term = new Date(asset.prediction_term).toISOString();
+        asset.term =asset.prediction_term.replace(' ', 'T').substring(0,23)+'Z';
+ 
       });
       if(assets.length < 0){
         this.empty = true;
@@ -120,7 +121,9 @@ export class MainComponent implements OnInit {
   }
   timeframe?: string; 
   showtimeframe(timeframe:string){
-
+    this.assets.forEach(a => {
+      a.isactive = true
+    })
     this.timeframe = timeframe
     let visibleassets = this.assets.filter(a => a.timeframe == timeframe)
     this.assets.forEach(a => {

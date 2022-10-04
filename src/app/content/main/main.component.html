@@ -23,13 +23,16 @@
         <div class="assetRow">
             <div class="assetData">
                 <div class="assetName">
-                 <div class="assetSmall" [ngClass]="{choise: namesorted != 'neutral'}" (click)="sortAssetsBy('name')">asset name 
-                      </div>
-                <div class="assetSmall" id="ticker" (click)="sortAssetsBy('name')">(symbol)
-                    <i *ngIf="namesorted=='up'" class="fa-solid fa-sort-up"></i>
-                    <i *ngIf="namesorted=='neutral'" class="fa-solid fa-sort sorter"></i>
-                    <i *ngIf="namesorted=='down'" class="fa-solid fa-sort-down"></i>                   
-              
+                    <div style="display:flex;">
+                    <div class="assetSmall" [ngClass]="{choise: namesorted != 'neutral'}" (click)="sortAssetsBy('name')">asset name 
+                        </div>
+                    <div class="assetSmall" id="ticker" (click)="sortAssetsBy('name')">(symbol)               
+                    </div>
+                    <div class="assetSmall" (click)="sortAssetsBy('name')">
+                        <i *ngIf="namesorted=='up'" class="fa-solid fa-sort-up"></i>
+                        <i *ngIf="namesorted=='neutral'" class="fa-solid fa-sort sorter"></i>
+                        <i *ngIf="namesorted=='down'" class="fa-solid fa-sort-down"></i>   
+                    </div>
                 </div>
                 <div class="assetSmall">
                     <div class="smallSelectors">

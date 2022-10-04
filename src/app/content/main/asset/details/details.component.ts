@@ -14,6 +14,8 @@ export class DetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.asset?.models.forEach(m => { m.last_tuning = m.last_updated.replace(' ', 'T').substring(0,23)+'Z';
+    });
   }
 
 }
