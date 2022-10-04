@@ -9,24 +9,36 @@
     <div *ngIf="empty" class="noAssets">
         An error occured, please try again later.
     </div>
-    <div class="add" [ngClass]="{dark: darkmode === true, light: darkmode===false}">   
-       hello this is an add 
+    <div class="ad" [ngClass]="{dark: darkmode === true, light: darkmode===false}">   
+       
     </div>
 </div>
-
 <div class="overlay" *ngIf="isLoading">
     <app-loading-spinner  ></app-loading-spinner>
 </div>
 
 <div class="contentHeader" [ngClass]="{dark: darkmode === true, light: darkmode===false}">
+
     <div class="asset">
         <div class="assetRow">
             <div class="assetData">
                 <div class="assetName">
-                <i class="fas fa-arrow-circle-up arrow glowup big-arrow" style="visibility:hidden"></i>
-                <div class="assetSmall">asset name</div>
-                <div class="assetSmall" id="ticker">(symbol)</div>
+                 <div class="assetSmall" [ngClass]="{choise: namesorted != 'neutral'}" (click)="sortAssetsBy('name')">asset name 
+                      </div>
+                <div class="assetSmall" id="ticker" (click)="sortAssetsBy('name')">(symbol)
+                    <i *ngIf="namesorted=='up'" class="fa-solid fa-sort-up"></i>
+                    <i *ngIf="namesorted=='neutral'" class="fa-solid fa-sort sorter"></i>
+                    <i *ngIf="namesorted=='down'" class="fa-solid fa-sort-down"></i>                   
+              
                 </div>
+                <div class="assetSmall">
+                    <div class="smallSelectors">
+                        <span class="smallSelector" [ngClass]="{choise: timeframe === '1h'}" (click)="showtimeframe('1h')">1h</span>
+                        <span class="smallSelector" [ngClass]="{choise: timeframe === '4h'}" (click)="showtimeframe('4h')">4h</span>
+                        <span class="smallSelector" [ngClass]="{choise: timeframe === '1d'}" (click)="showtimeframe('1d')">1d</span>
+                    </div>
+                </div>
+            </div>
                 <div class="assetPrice">            
                     <div id="price" title="current price">
                         <div class="assetSmall">
@@ -43,22 +55,33 @@
                 </div>
             </div>
             <div class="assetTachometers" id="texttachometers">
-                <div class="assetTachometer" title="hit ratio">
+                <div class="assetTachometer"  title="hit ratio">
                     
-                    <div class="assetSmall"> <!--hit ratio-->
+                    <div class="assetSmall" (click)="sortAssetsBy('hitratio')" [ngClass]="{choise: hitratiosorted != 'neutral'}"> <!--hit ratio-->
                     hit ratio
-                </div>
+                        <i *ngIf="hitratiosorted=='down'" class="fa-solid fa-sort-up"></i>
+                        <i *ngIf="hitratiosorted=='neutral'" class="fa-solid fa-sort sorter"></i>
+                        <i *ngIf="hitratiosorted=='up'" class="fa-solid fa-sort-down"></i>
+                    </div>
                 </div>
                 <div class="assetTachometer" title="prediction score">
                     
-                    <div class="assetSmall"> <!--prediction score-->
+                    <div class="assetSmall" (click)="sortAssetsBy('score')" [ngClass]="{choise: scoresorted != 'neutral'}"> <!--prediction score-->
                     prediction score
+                    <i *ngIf="scoresorted=='down'" class="fa-solid fa-sort-up"></i>
+                    <i *ngIf="scoresorted=='neutral'" class="fa-solid fa-sort sorter"></i>
+                    <i *ngIf="scoresorted=='up'" class="fa-solid fa-sort-down"></i>
+   
                 </div>
                 </div>
-                <div class="assetTachometer" title="sentiment">
+                <div class="assetTachometer" (click)="sortAssetsBy('sentiment')" title="sentiment" [ngClass]="{choise: sentimentsorted != 'neutral'}">
                     
                     <div class="assetSmall">
                     sentiment
+                    <i *ngIf="sentimentsorted=='up'" class="fa-solid fa-sort-up"></i>
+                    <i *ngIf="sentimentsorted=='neutral'" class="fa-solid fa-sort sorter"></i>
+                    <i *ngIf="sentimentsorted=='down'" class="fa-solid fa-sort-down"></i>                   
+
                     </div>
                 </div>
             </div>

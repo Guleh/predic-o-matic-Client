@@ -33,7 +33,7 @@
             {{ item.name }}
         </div>
         <div class="detailDirection">            
-            <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up arrow glowup"></i>
+            <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up arro4w glowup"></i>
             <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down arrow glowdown"></i> 
         </div>
         <div class="detailAccuracy" title="accuracy"> <!--prediction score-->
@@ -43,7 +43,7 @@
             {{item.predictions_correct}}/{{item.predictions_total}}
         </div>
         <div class="detailDate" title="last parameter tuning">
-            {{item.last_updated  | date : 'M/d/yy - H:mm'}}
+            {{item.last_updated+'z'  | date : 'M/d/yy - H:mm'}}
         </div>
     </div>
 </div>

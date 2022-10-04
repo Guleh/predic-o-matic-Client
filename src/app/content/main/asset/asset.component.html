@@ -1,4 +1,4 @@
-<div class="asset" [ngClass]="{assethighlight: display === true, dark: darkmode === true, light: darkmode===false}">
+<div *ngIf="asset.isactive" class="asset" [ngClass]="{assethighlight: display === true, dark: darkmode === true, light: darkmode===false}">
     <div (click)="onPress()"  class="assetRow" [ngClass]="{highlight: display === true, dark: darkmode === true, light: darkmode===false}">
         <div class="assetData">
             <div class="assetName">
@@ -20,7 +20,7 @@
             </div>
             <div class="assetTimeframe">
                 <div class="assetSmall">
-                {{ asset.prediction_term | date : 'M/d/yy - H:00'}}
+                {{ asset.term  | date : 'M/d/yy - H:00' }}
                 </div>
             </div>
         </div>

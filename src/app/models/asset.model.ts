@@ -22,6 +22,7 @@ export interface Asset {
     tags: Tag[]; 
     models: Algo[]; 
     prediction_term: string;
+    term: string;
     last_updated: string;
     candles: string;
     last_close: number;

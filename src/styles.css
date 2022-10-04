@@ -94,12 +94,16 @@ body{
 .hero{
     padding:10px;
     display: block;
+    
+    transition: .4s;
 }
 .addbanner{
+    
     height: 120px;
     width: 360px;
     min-width: 360px;
-    background-color: rgba(255, 255, 255, 0.12);
+    /*background-color: rgba(255, 255, 255, 0.12);*/
+
 }
 
 .content{
@@ -131,7 +135,7 @@ body{
     border: 0px;
 }
 .contentHeader{
-    padding: 0px;
+    padding:5px 0px;
     margin-top:141px;
     position: fixed;
     margin-left: 15%;
@@ -139,6 +143,7 @@ body{
     width: 70%;
     height: fit-content;
     font-size: 0.8em;
+    transition: .4s;
 }
 
 .contentHeader .asset{
@@ -369,7 +374,7 @@ body{
 
 
 
-.add{
+.ad{
     padding: 10px;
     margin-bottom: 20px;
     height: fit-content;
@@ -528,6 +533,20 @@ button.dark{
     padding:50px;
 }
 
+.sorter{
+    color:rgba(2, 3, 12, 0.4);
+}
+.smallSelectors{
+    padding:0px 0px 0px 15px;
+}
+.smallSelector{
+    padding:0px 5px;
+}
+.choise{
+    color:rgba(2, 3, 12, 1);
+    text-decoration: underline;
+}
+
 @media (max-width: 1440px){
     .assetRow{        
         min-width: 100%;
@@ -578,7 +597,7 @@ button.dark{
         transition: 0.4s;
     }
     .content{
-        padding-top:125px;
+        padding-top:155px;
         transition: 0.4s;
     }
     .contentHeader{
