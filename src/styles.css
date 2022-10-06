@@ -314,6 +314,9 @@ body{
     width:100px;
 }
 
+.lineChart{
+}
+
 .arrow{
     padding: 5px;
 }
@@ -412,6 +415,11 @@ body{
 .detail-right-row{
     width:30%;
     padding:0px 0px 0px 10px;
+    transition: 0.4s;   
+}
+.detail-full-row{
+    width:100%;
+    height: fit-content;
     transition: 0.4s;   
 }
 

@@ -23,6 +23,7 @@ export class AssetComponent implements OnInit {
       }
       this.totalconsensus = this.asset!.ups + this.asset.downs;
     }
+    
   }
 
 

@@ -50,7 +50,6 @@ export class MainComponent implements OnInit {
   
   assets: Asset[] = [];
   visibleassets: Asset[] = [];
-  invisibleassets: Asset[] = [];
   nameAscending!: Boolean;
   sentimentAscending!: Boolean;
   hitratioAscending!: Boolean;

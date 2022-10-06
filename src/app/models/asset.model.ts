@@ -1,4 +1,5 @@
 import { Algo } from "./algo.model";
+import { Hitratio } from "./hitratio.models";
 import { Tag } from "./tag.model";
 
 export interface Asset {
@@ -27,4 +28,5 @@ export interface Asset {
     candles: string;
     last_close: number;
     current_price: number;
+    hitratios: Hitratio[]; 
 }

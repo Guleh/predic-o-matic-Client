@@ -20,6 +20,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { UtcToLocalTime } from './services/localedate.datepipe';
 import { AboutComponent } from './content/about/about.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

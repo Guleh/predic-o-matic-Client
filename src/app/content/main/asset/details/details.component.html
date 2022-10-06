@@ -9,46 +9,58 @@
     <div class="detail">
         <div class="detail-left-row">
 
-<div class="detailRows">
-    <div class="detailRow" id="detailRowTitle">
-        <div class="detailName">
-            <b>model</b>
+            <div class="detailRows">
+                <div class="detailRow" id="detailRowTitle">
+                    <div class="detailName">
+                        <b>model</b>
+                    </div>
+                    <div class="detailDirection">            
+                        <b>prediction</b>
+                    </div>
+                    <div class="detailAccuracy" title="current model accuracy"> <!--prediction score-->
+                        <b>score</b>*
+                    </div>
+                    <div class="detailHitRatio" title="predicted correct / total number of predictions made"> <!--hit ratio-->
+                        <b>hit ratio</b>*
+                    </div>
+                    <div class="detailDate" title="last parameter tuning">
+                        <b>last tuning</b>*
+                    </div>
+                </div>
+
+                <div class="detailRow" *ngFor="let item of asset?.models;">
+                    <div class="detailName">
+                        {{ item.name }}
+                    </div>
+                    <div class="detailDirection">            
+                        <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up arro4w glowup"></i>
+                        <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down arrow glowdown"></i> 
+                    </div>
+                    <div class="detailAccuracy" title="accuracy"> <!--prediction score-->
+                        {{ (item!.accuracy*100).toFixed(0) }}%
+                    </div>
+                    <div class="detailHitRatio" title="hit ratio"> <!--hit ratio-->
+                        {{item.predictions_correct}}/{{item.predictions_total}}
+                    </div>
+                    <div class="detailDate" title="last parameter tuning">
+                        {{item.last_tuning  | date : 'M/d/yy - H:mm'}}
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-        <div class="detailDirection">            
-            <b>prediction</b>
-        </div>
-        <div class="detailAccuracy" title="current model accuracy"> <!--prediction score-->
-            <b>score</b>*
-        </div>
-        <div class="detailHitRatio" title="predicted correct / total number of predictions made"> <!--hit ratio-->
-            <b>hit ratio</b>*
-        </div>
-        <div class="detailDate" title="last parameter tuning">
-            <b>last tuning</b>*
+        <div class="detail-right-row">
+            <div echarts [autoResize]="false" [options]="barChartOption">
+
+            </div>
         </div>
     </div>
-
-    <div class="detailRow" *ngFor="let item of asset?.models;">
-        <div class="detailName">
-            {{ item.name }}
-        </div>
-        <div class="detailDirection">            
-            <i *ngIf="item.prediction > 0" class="fas fa-arrow-circle-up arro4w glowup"></i>
-            <i *ngIf="item.prediction == 0" class="fas fa-arrow-circle-down arrow glowdown"></i> 
-        </div>
-        <div class="detailAccuracy" title="accuracy"> <!--prediction score-->
-            {{ (item!.accuracy*100).toFixed(0) }}%
-        </div>
-        <div class="detailHitRatio" title="hit ratio"> <!--hit ratio-->
-            {{item.predictions_correct}}/{{item.predictions_total}}
-        </div>
-        <div class="detailDate" title="last parameter tuning">
-            {{item.last_tuning  | date : 'M/d/yy - H:mm'}}
+    <div class="lineChart">
+        <div echarts [autoResize]="true" [options]="historyChartOption">
+    
         </div>
     </div>
+    
 </div>
 
-
-</div>
-</div>
-</div>
