@@ -123,10 +123,14 @@ export class ChartComponent implements OnInit {
       return'#b34c71'
     }else if(value < 50){
       return '#ac6a86'
+    }else if(value < 55){
+      return '#bacecd'
     }else if(value < 60){
+      return '#aed1cf'
+    }else if(value < 70){
       return '#90d5d0'
     }
-    return '85ffed'    
+    return '#85ffed'    
   }
 
 }

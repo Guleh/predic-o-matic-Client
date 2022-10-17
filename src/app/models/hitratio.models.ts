@@ -4,4 +4,5 @@ export interface Hitratio {
     id: string;
     hitratio: number;
     asset: Asset;
+    created: string;
 }

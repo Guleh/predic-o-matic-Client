@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import  * as echarts from 'echarts';
 import { Algo } from 'src/app/models/algo.model';
 import { Asset } from 'src/app/models/asset.model';
+import { Hitratio } from 'src/app/models/hitratio.models'
 
 @Component({
   selector: 'app-details',
@@ -12,7 +13,7 @@ export class DetailsComponent implements OnInit {
 
   
   @Input()asset?:Asset;
-  ratiolist: number[] = [];
+  ratiolist: Hitratio[] = [];
   historyChartOption!: echarts.EChartsOption;
   barChartOption!: echarts.EChartsOption;
   candles?: any;
@@ -25,9 +26,13 @@ export class DetailsComponent implements OnInit {
     
     if (this.asset){
       this.asset.hitratios.forEach(m =>{
-        this.ratiolist.push(m.hitratio*100);
+        this.ratiolist.push(m);
     })
-    this.ratiolist = this.ratiolist.slice(-50,-1);
+    /*var i = this.ratiolist.length;
+    while (i--) {
+      (i + 1) % 2 === 0 && this.ratiolist.splice(i, 1);
+    }*/
+    /*this.ratiolist = this.ratiolist.slice(-50,-1);*/
     console.log(this.ratiolist.slice())
     
     this.historyChartOption = {
@@ -53,7 +58,7 @@ export class DetailsComponent implements OnInit {
         data: this.getHitratioDates(),
         axisLabel: {
           color: 'rgba(255, 255, 255, 0.5)'
-        }
+        },
       },
       yAxis: {
         type: 'value',
@@ -65,7 +70,8 @@ export class DetailsComponent implements OnInit {
         },
         axisLabel: {
           color: 'rgba(255, 255, 255, 0.5)'
-        }
+        },
+        max: this.gethighest(),
       },
       tooltip: {
         showContent: false,
@@ -76,7 +82,7 @@ export class DetailsComponent implements OnInit {
       },
       series: [
         {
-          data: this.ratiolist,
+          data: this.getHitratioNums(),
           type: 'line',
           color: '#85ffed',
           smooth: true,
@@ -150,28 +156,34 @@ export class DetailsComponent implements OnInit {
 
   
   getlowest(){
-    return Math.floor(Math.min(...this.ratiolist))
+    return Math.floor(Math.min(...this.getHitratioDates()))
   }
   gethighest(){
-    return Math.ceil(Math.max(...this.ratiolist))
+    return Math.ceil(Math.max(...this.getHitratioNums()))
   }
 
   getHitratioDates(){
+    var list:any = []
     if (this.asset){
-      var list:any = []
-      if (this.candles){ 
-        var c = this.candles
-        let i = 0;
-        this.ratiolist.forEach(e => {
-          list.push(
-            new Date(c[99-i]['time']*1000).toUTCString()         
-            )
-            i++
-        });    
-        return list.reverse()
+      if (this.ratiolist){
+        this.ratiolist.forEach(el => {
+          list.push( el.created)
+          })
+        }
       }
-      return []
-    }
+      return list
+  }
+  getHitratioNums(){
+    var list:any = []
+    if (this.asset){
+      if (this.ratiolist){
+        var list:any = []
+        this.ratiolist.forEach(el => {
+          list.push( el.hitratio*100)
+          })
+        }
+      }
+      return list
   }
 
   getDates(){

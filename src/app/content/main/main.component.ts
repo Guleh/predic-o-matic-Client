@@ -24,9 +24,25 @@ export class MainComponent implements OnInit {
         this.assetService.getCurrentPrice(asset).subscribe(result => {
           asset.current_price = result[asset.cg_name.toLowerCase()]['usd'];    
 
-        })    
-        asset.term =asset.prediction_term.replace(' ', 'T').substring(0,23)+'Z';
- 
+        })   
+        if(asset.timeframe == '1h'){ 
+          asset.term =asset.prediction_term.replace(' ', 'T').substring(0,23)+'Z';
+        }
+        else {
+          let tflen = 3
+          if (asset.timeframe == '1d'){
+            tflen = 21
+          } 
+          asset.term =asset.prediction_term.replace(' ', 'T').substring(0,23)+'Z';
+          let substr = asset.term.substring(11,13)
+          let tf = Number(substr) + tflen
+          let tfstr = tf.toString()
+          if(tf<10){
+            tfstr = "0"+tf
+          }
+          asset.term =asset.term.replace(substr, tfstr);
+        }
+
       });
       if(assets.length < 0){
         this.empty = true;
