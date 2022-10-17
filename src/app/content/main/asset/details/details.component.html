@@ -6,6 +6,9 @@
         last close: {{asset?.last_close}}
         current price: {{asset?.current_price}}
         </div>
+    <div>
+        hallo
+    </div>
     <div class="detail">
         <div class="detail-left-row">
 
@@ -51,16 +54,16 @@
 
         </div>
         <div class="detail-right-row">
-            <div echarts [autoResize]="true" [options]="barChartOption">
+            <div echarts [autoResize]="true" [options]="barChartOption" class="barchart">
 
             </div>
         </div>
+    
+    
     </div>
-    <div class="lineChart">
-        <div echarts [autoResize]="true" [options]="historyChartOption">
+        <div class="lineChart" echarts [autoResize]="true" [options]="historyChartOption">
     
         </div>
-    </div>
     
 </div>
 

@@ -15,32 +15,64 @@ export class DetailsComponent implements OnInit {
   ratiolist: number[] = [];
   historyChartOption!: echarts.EChartsOption;
   barChartOption!: echarts.EChartsOption;
+  candles?: any;
   constructor() { }
 
   ngOnInit(): void {
+    
+    this.candles = JSON.parse(this.asset!.candles)
     this.asset?.models.forEach(m => { m.last_tuning = m.last_updated.replace(' ', 'T').substring(0,23)+'Z';});
-
+    
     if (this.asset){
       this.asset.hitratios.forEach(m =>{
         this.ratiolist.push(m.hitratio*100);
     })
+    this.ratiolist = this.ratiolist.slice(-50,-1);
+    console.log(this.ratiolist.slice())
     
     this.historyChartOption = {
-      title: {
-        text: 'historic hitratio',
-        textStyle: {
-          color: '#fff',
+      grid: {
+        left: '50px',
+        right: '20px'
+      },
+      title:{
+        text: 'history of hitratio',
+        textStyle:{
+          color: 'rgba(255, 255, 255, 1)',
+          fontFamily: 'montserrat',
+          fontStyle: 'normal',
+          fontSize: '16'
         },
+        left: '6px',
+        top: '10%'
       },
       axisPointer: { type: 'cross' },
       xAxis: {
+        show: false,
         type: 'category',
-        data: []
+        data: this.getHitratioDates(),
+        axisLabel: {
+          color: 'rgba(255, 255, 255, 0.5)'
+        }
       },
       yAxis: {
         type: 'value',
-        min: this.getlowest(),
-        max: this.gethighest()
+        scale: true,
+        splitLine:{
+          lineStyle:{
+            color: 'rgba(255, 255, 255, 0.1)'
+          }
+        },
+        axisLabel: {
+          color: 'rgba(255, 255, 255, 0.5)'
+        }
+      },
+      tooltip: {
+        showContent: false,
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross'
+        },
       },
       series: [
         {
@@ -65,27 +97,53 @@ export class DetailsComponent implements OnInit {
     }
 
     this.barChartOption = {
+      grid: {
+        left: '5px',
+        right: '20px',
+        top: '10px',
+        bottom: '0px',
+      },
       xAxis: {
+        show: false,
         type: 'category',
         data: this.getDates(),
       },
       yAxis: {
+        show: false,
         scale: true,
         axisLine: { lineStyle: { color: '#8392A5' } },
         splitLine: { show: false }
+      },
+      tooltip: {
+        showContent: false,
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross'
+        },
+      },
+      axisPointer: {
+        link: [
+          {
+            xAxisIndex: 'all'
+          }
+        ],
+        label: {
+          backgroundColor: 'rgba(255, 255, 255, 0.75)',
+          color: '#000'
+        }
       },
       series: [
         {
           type: 'candlestick',
           data: this.getseries(),
           itemStyle: {
-            color: '#FD1050',
-            color0: '#0CF49B',
-            borderColor: '#FD1050',
-            borderColor0: '#0CF49B'
-          }
+            color0: '#85ffed',
+            color: '#ac6a86',
+            borderColor0: '#85ffed',
+            borderColor: '#ac6a86'
+          },
         }
-      ]
+      ],
     }
     }
   }
@@ -98,61 +156,29 @@ export class DetailsComponent implements OnInit {
     return Math.ceil(Math.max(...this.ratiolist))
   }
 
+  getHitratioDates(){
+    if (this.asset){
+      var list:any = []
+      if (this.candles){ 
+        var c = this.candles
+        let i = 0;
+        this.ratiolist.forEach(e => {
+          list.push(
+            new Date(c[99-i]['time']*1000).toUTCString()         
+            )
+            i++
+        });    
+        return list.reverse()
+      }
+      return []
+    }
+  }
+
   getDates(){
     if (this.asset){
-      let c = JSON.parse(this.asset.candles)
+      let c = this.candles
       
       return [
-        new Date(c[0]['time']*1000).toLocaleTimeString(),
-        new Date(c[1]['time']*1000).toLocaleTimeString(),
-        new Date(c[2]['time']*1000).toLocaleTimeString(),
-        new Date(c[3]['time']*1000).toLocaleTimeString(),
-        new Date(c[4]['time']*1000).toLocaleTimeString(),
-        new Date(c[5]['time']*1000).toLocaleTimeString(),
-        new Date(c[6]['time']*1000).toLocaleTimeString(),
-        new Date(c[7]['time']*1000).toLocaleTimeString(),
-        new Date(c[8]['time']*1000).toLocaleTimeString(),
-        new Date(c[9]['time']*1000).toLocaleTimeString(),
-        new Date(c[10]['time']*1000).toLocaleTimeString(),
-        new Date(c[11]['time']*1000).toLocaleTimeString(),
-        new Date(c[12]['time']*1000).toLocaleTimeString(),
-        new Date(c[13]['time']*1000).toLocaleTimeString(),
-        new Date(c[14]['time']*1000).toLocaleTimeString(),
-        new Date(c[15]['time']*1000).toLocaleTimeString(),
-        new Date(c[16]['time']*1000).toLocaleTimeString(),
-        new Date(c[17]['time']*1000).toLocaleTimeString(),
-        new Date(c[18]['time']*1000).toLocaleTimeString(),
-        new Date(c[19]['time']*1000).toLocaleTimeString(),
-        new Date(c[20]['time']*1000).toLocaleTimeString(),
-        new Date(c[21]['time']*1000).toLocaleTimeString(),
-        new Date(c[22]['time']*1000).toLocaleTimeString(),
-        new Date(c[23]['time']*1000).toLocaleTimeString(),
-        new Date(c[24]['time']*1000).toLocaleTimeString(),
-        new Date(c[25]['time']*1000).toLocaleTimeString(),
-        new Date(c[26]['time']*1000).toLocaleTimeString(),
-        new Date(c[27]['time']*1000).toLocaleTimeString(),
-        new Date(c[28]['time']*1000).toLocaleTimeString(),
-        new Date(c[29]['time']*1000).toLocaleTimeString(),
-        new Date(c[30]['time']*1000).toLocaleTimeString(),
-        new Date(c[31]['time']*1000).toLocaleTimeString(),
-        new Date(c[32]['time']*1000).toLocaleTimeString(),
-        new Date(c[33]['time']*1000).toLocaleTimeString(),
-        new Date(c[34]['time']*1000).toLocaleTimeString(),
-        new Date(c[35]['time']*1000).toLocaleTimeString(),
-        new Date(c[36]['time']*1000).toLocaleTimeString(),
-        new Date(c[37]['time']*1000).toLocaleTimeString(),
-        new Date(c[38]['time']*1000).toLocaleTimeString(),
-        new Date(c[39]['time']*1000).toLocaleTimeString(),
-        new Date(c[40]['time']*1000).toLocaleTimeString(),
-        new Date(c[41]['time']*1000).toLocaleTimeString(),
-        new Date(c[42]['time']*1000).toLocaleTimeString(),
-        new Date(c[43]['time']*1000).toLocaleTimeString(),
-        new Date(c[44]['time']*1000).toLocaleTimeString(),
-        new Date(c[45]['time']*1000).toLocaleTimeString(),
-        new Date(c[46]['time']*1000).toLocaleTimeString(),
-        new Date(c[47]['time']*1000).toLocaleTimeString(),
-        new Date(c[48]['time']*1000).toLocaleTimeString(),
-        new Date(c[49]['time']*1000).toLocaleTimeString(),
         new Date(c[50]['time']*1000).toLocaleTimeString(),
         new Date(c[51]['time']*1000).toLocaleTimeString(),
         new Date(c[52]['time']*1000).toLocaleTimeString(),
@@ -210,59 +236,9 @@ export class DetailsComponent implements OnInit {
 
   getseries() {
     if (this.asset){
-      let c = JSON.parse(this.asset.candles)
+      let c = this.candles
       
       return [
-        [c[0]['close'],c[0]['open'],c[0]['high'],c[0]['low']],
-        [c[1]['close'],c[1]['open'],c[1]['high'],c[1]['low']],
-        [c[2]['close'],c[2]['open'],c[2]['high'],c[2]['low']],
-        [c[3]['close'],c[3]['open'],c[3]['high'],c[3]['low']],
-        [c[4]['close'],c[4]['open'],c[4]['high'],c[4]['low']],
-        [c[5]['close'],c[5]['open'],c[5]['high'],c[5]['low']],
-        [c[6]['close'],c[6]['open'],c[6]['high'],c[6]['low']],
-        [c[7]['close'],c[7]['open'],c[7]['high'],c[7]['low']],
-        [c[8]['close'],c[8]['open'],c[8]['high'],c[8]['low']],
-        [c[9]['close'],c[9]['open'],c[9]['high'],c[9]['low']],
-        [c[10]['close'],c[10]['open'],c[10]['high'],c[10]['low']],
-        [c[11]['close'],c[11]['open'],c[11]['high'],c[11]['low']],
-        [c[12]['close'],c[12]['open'],c[12]['high'],c[12]['low']],
-        [c[13]['close'],c[13]['open'],c[13]['high'],c[13]['low']],
-        [c[14]['close'],c[14]['open'],c[14]['high'],c[14]['low']],
-        [c[15]['close'],c[15]['open'],c[15]['high'],c[15]['low']],
-        [c[16]['close'],c[16]['open'],c[16]['high'],c[16]['low']],
-        [c[17]['close'],c[17]['open'],c[17]['high'],c[17]['low']],
-        [c[18]['close'],c[18]['open'],c[18]['high'],c[18]['low']],
-        [c[19]['close'],c[19]['open'],c[19]['high'],c[19]['low']],
-        [c[20]['close'],c[20]['open'],c[20]['high'],c[20]['low']],
-        [c[21]['close'],c[21]['open'],c[21]['high'],c[21]['low']],
-        [c[22]['close'],c[22]['open'],c[22]['high'],c[22]['low']],
-        [c[23]['close'],c[23]['open'],c[23]['high'],c[23]['low']],
-        [c[24]['close'],c[24]['open'],c[24]['high'],c[24]['low']],
-        [c[25]['close'],c[25]['open'],c[25]['high'],c[25]['low']],
-        [c[26]['close'],c[26]['open'],c[26]['high'],c[26]['low']],
-        [c[27]['close'],c[27]['open'],c[27]['high'],c[27]['low']],
-        [c[28]['close'],c[28]['open'],c[28]['high'],c[28]['low']],
-        [c[29]['close'],c[29]['open'],c[29]['high'],c[29]['low']],
-        [c[30]['close'],c[30]['open'],c[30]['high'],c[30]['low']],
-        [c[31]['close'],c[31]['open'],c[31]['high'],c[31]['low']],
-        [c[32]['close'],c[32]['open'],c[32]['high'],c[32]['low']],
-        [c[33]['close'],c[33]['open'],c[33]['high'],c[33]['low']],
-        [c[34]['close'],c[34]['open'],c[34]['high'],c[34]['low']],
-        [c[35]['close'],c[35]['open'],c[35]['high'],c[35]['low']],
-        [c[36]['close'],c[36]['open'],c[36]['high'],c[36]['low']],
-        [c[37]['close'],c[37]['open'],c[37]['high'],c[37]['low']],
-        [c[38]['close'],c[38]['open'],c[38]['high'],c[38]['low']],
-        [c[39]['close'],c[39]['open'],c[39]['high'],c[39]['low']],
-        [c[40]['close'],c[40]['open'],c[40]['high'],c[40]['low']],
-        [c[41]['close'],c[41]['open'],c[41]['high'],c[41]['low']],
-        [c[42]['close'],c[42]['open'],c[42]['high'],c[42]['low']],
-        [c[43]['close'],c[43]['open'],c[43]['high'],c[43]['low']],
-        [c[44]['close'],c[44]['open'],c[44]['high'],c[44]['low']],
-        [c[45]['close'],c[45]['open'],c[45]['high'],c[45]['low']],
-        [c[46]['close'],c[46]['open'],c[46]['high'],c[46]['low']],
-        [c[47]['close'],c[47]['open'],c[47]['high'],c[47]['low']],
-        [c[48]['close'],c[48]['open'],c[48]['high'],c[48]['low']],
-        [c[49]['close'],c[49]['open'],c[49]['high'],c[49]['low']],
         [c[50]['close'],c[50]['open'],c[50]['high'],c[50]['low']],
         [c[51]['close'],c[51]['open'],c[51]['high'],c[51]['low']],
         [c[52]['close'],c[52]['open'],c[52]['high'],c[52]['low']],
@@ -313,9 +289,6 @@ export class DetailsComponent implements OnInit {
         [c[97]['close'],c[97]['open'],c[97]['high'],c[97]['low']],
         [c[98]['close'],c[98]['open'],c[98]['high'],c[98]['low']],
         [c[99]['close'],c[99]['open'],c[99]['high'],c[99]['low']],
-
-
-
       ]
     }  
     return [[]]

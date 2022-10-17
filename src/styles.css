@@ -315,7 +315,10 @@ body{
 }
 
 .lineChart{
+    display: flex;
+    height:220px;
 }
+
 
 .arrow{
     padding: 5px;
@@ -329,7 +332,7 @@ body{
 
 .glowdown{
     padding: 5px;
-    color:rgb(172, 106, 134);
+    color:#ac6a86;
     text-shadow: 0px 0px 15px rgba(172, 106, 134,0.6);
 }
 .textglow{
@@ -554,6 +557,10 @@ button.dark{
     color:rgba(2, 3, 12, 1);
     text-decoration: underline;
 }
+.barchart{
+    height:150px;
+}
+
 
 @media (max-width: 1440px){
     .assetRow{        
