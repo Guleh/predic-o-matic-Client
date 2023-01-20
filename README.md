@@ -1,5 +1,9 @@
 # PredictOMatic
 
+This is the first version of the predict_o_matic web-application. The current version is private.<br>
+Predict-o-matic is a project which tries to generate predictions for the crypto currency market. These predictions are made using well known machine learning self-optimizing algorithms.
+The project is made for fun and is in no way intended to provide actual trading advice.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
 
 ## Development server
