@@ -10,14 +10,14 @@ export class AssetService {
   constructor(private http: HttpClient) { }
 
 
-  url = 'https://t17a0not6d.execute-api.eu-west-3.amazonaws.com/dev' 
+  url = '***' 
 
   
   fetchAssets(){    
     const httpOptions = {
       headers: new HttpHeaders({ 
-        'X-Api-Key': '2ns4blb1oc4u3QjXvsjp63h8Kj2D4loc2E0oZFAi',
-        'Authorizationtoken': '7fdcdc060f8f6c0dd019108bdfdc4f9a5815895e',
+        'X-Api-Key': '***',
+        'Authorizationtoken': '***',
       })
     };
 
