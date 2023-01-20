@@ -1,6 +1,6 @@
 # PredictOMatic
 
-This is the first version of the predict_o_matic web-application. The current version is private.<br>
+This is the first version of the predict-o-matic web-application. The current version is private.<br>
 Predict-o-matic is a project which tries to generate predictions for the crypto currency market. These predictions are made using self-optimizing machine learning algorithms.
 The project is made for fun and is in no way intended to provide actual trading advice.
 
